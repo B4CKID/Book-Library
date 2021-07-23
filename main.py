@@ -22,9 +22,9 @@ def quit():
   print('The program will end now!')
 
 def copy():
-  with open('library.txt', 'w') as f:
-    for pop in library:
-      f.write(pop)
+  with open("library.txt", 'w') as f:
+    json.dump(library,f, indent=4)
+
 
 def add():
   print("It seems you would like to add a book to your library, how exciting!")
