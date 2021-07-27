@@ -1,36 +1,51 @@
+import database
 import json
 library = [
 
 ]
 
 def list():
-  with open('library.txt', 'r') as f:
-    d = read(f)
-    print(d)
-
+  with open('library.txt', 'r') as file:
+    d = json.load(file)
+    library.append(d)
+    print(library)
+  book_menu()
+  
 def read():
   print("It seems you have finished a book, congrats!")
   read = input('What Book Did You Finish Reading?: ')
-  pass
+  library.append({
+        'Name': add,
+        'Author': add1,
+        'Read': add2
+    })
+  print('You have added a new book to your library!')
+  
 
 def delete():
   print("It seems you are trying to delete a book from your library!")
   delete = input('What Book do you want deleted?: ')
-  pass
+  with open('library.txt', 'r') as d:
+    for lines in d:
+      if lines == delete:
+        d.remove(lines)
+              
+  book_menu()
 
 def quit():
   print('The program will end now!')
+  
 
 def copy():
-  with open("library.txt", 'w') as f:
+  with open("library.txt", 'a') as f:
     json.dump(library,f, indent=4)
-
+  
 
 def add():
   print("It seems you would like to add a book to your library, how exciting!")
   add = input("Please Enter The Book's Name: ")  
   add1 = input("Please Enter The Author's Name: ")
-  add2 = input("Have You Finished Reading This Book?: T or F")
+  add2 = False
 
   library.append({
         'Name': add,
@@ -45,7 +60,7 @@ def add():
 
 def book_menu():
   book = input("Please Choose an Option: A(Add A Book to Library) - R(Mark A Book As Now Read) - D(Delete A Book From Library) Q(Quit APP) ")
-  while book:
+  while book != 'q':
     if book == 'a':
       add()
 
@@ -60,9 +75,9 @@ def book_menu():
       
     elif book == 'q':
       quit()
-
-
+    else:
+      print("This is not a valid command")
+      book_menu()
 
 book_menu()
-
-
+copy()

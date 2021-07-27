@@ -1,12 +1,7 @@
 [
     {
         "Name": "billy",
-        "Author": "billy",
-        "Read": "billy"
-    },
-    {
-        "Name": "alicia",
-        "Author": "alicia",
-        "Read": "alica"
+        "Author": "butts",
+        "Read": false
     }
 ]
